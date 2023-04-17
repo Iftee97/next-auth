@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useSession, getSession, signOut } from 'next-auth/react'
+import { FaChevronLeft } from "react-icons/fa"
 
 export default function Account() {
   const { data: session } = useSession()
@@ -20,6 +22,9 @@ export default function Account() {
             <h1 className="text-3xl text-red-500 font-bold mb-3">
               Welcome {session.user.name}!
             </h1>
+            <h3 className='text-xl font-semibold text-red-700 mb-3'>
+              ** This is a protected page. You can only see this page if you are signed in. **
+            </h3>
             <Image
               src={session.user.image}
               alt={session.user.name}
@@ -41,6 +46,14 @@ export default function Account() {
                 Sign Out
               </span>
             </button>
+            <Link href='/'>
+              <p className='text-blue-700 font-normal flex items-center gap-1 mt-6'>
+                <FaChevronLeft className='text-[14px]' />
+                <span className='text-base'>
+                  Home
+                </span>
+              </p>
+            </Link>
           </>
         ) : (
           <p className='text-xl text-center font-medium'>
