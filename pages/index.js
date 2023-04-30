@@ -14,7 +14,7 @@ import {
 
 export default function Home({ providers }) {
   const { data: session } = useSession()
-  console.log('session:', session)
+  console.log('session [index.js]: >>>>>>>>>>', session)
 
   console.log('providers:', providers)
 

@@ -6,6 +6,7 @@ import { FaChevronLeft } from "react-icons/fa"
 
 export default function Account() {
   const { data: session } = useSession()
+  console.log('session [account.js]: >>>>>>>>>>', session)
 
   return (
     <>
@@ -27,7 +28,7 @@ export default function Account() {
             </h3>
             <Image
               src={session.user.image}
-              alt={session.user.name}
+              alt={`${session.user.name}'s profile image`}
               width={50}
               height={50}
               className="rounded-full mb-3"
@@ -46,7 +47,8 @@ export default function Account() {
                 Sign Out
               </span>
             </button>
-            <Link href='/'>
+            <br />
+            <Link href='/' className='inline-block'>
               <p className='text-blue-700 font-normal flex items-center gap-1 mt-6'>
                 <FaChevronLeft className='text-[14px]' />
                 <span className='text-base'>
@@ -68,6 +70,7 @@ export default function Account() {
 export async function getServerSideProps(context) {
   const session = await getSession(context)
 
+  // If no session, redirect to homepage -- server side route guard
   if (!session) {
     return {
       redirect: {
