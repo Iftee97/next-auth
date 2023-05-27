@@ -41,7 +41,8 @@ export default function Account() {
             </p>
             <button
               className='bg-slate-300 rounded-md py-2 px-4'
-              onClick={() => signOut()}
+              // onClick={() => signOut()} // without callback url for redirect
+              onClick={() => signOut({ callbackUrl: '/' })} // redirects to / after signing out
             >
               <span className='text-black text-base'>
                 Sign Out
