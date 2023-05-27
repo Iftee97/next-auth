@@ -59,7 +59,9 @@ export default function Home({ providers }) {
             <div className='flex flex-wrap items-center gap-4'>
               <button
                 className='bg-slate-300 rounded-md py-2 px-4 flex items-center gap-2'
-                onClick={() => signIn('github')}
+                onClick={() => signIn('github', {
+                  callbackUrl: '/account' // redirects to /account after signing in with github
+                })}
               >
                 <span className='text-black text-base'>
                   Sign In with GitHub
@@ -68,7 +70,9 @@ export default function Home({ providers }) {
               </button>
               <button
                 className='bg-slate-300 rounded-md py-2 px-4 flex items-center gap-2'
-                onClick={() => signIn('google')}
+                onClick={() => signIn('google', {
+                  callbackUrl: '/account' // redirects to /account after signing in with google
+                })}
               >
                 <span className='text-black text-base'>
                   Sign In with Google
